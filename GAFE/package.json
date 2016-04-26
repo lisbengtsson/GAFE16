@@ -1,0 +1,23 @@
+{
+  "name": "gafe.website",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [ ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-cli": "^0.1.13",
+    "grunt-ts": "^5.1.0",
+    "gulp": "^3.9.0",
+    "gulp-bower": "0.0.10",
+    "gulp-grunt": "^0.5.3",
+    "gulp-tslint": "^3.4.0",
+    "gulp-sass": "^2.2.0",
+    "del": "^2.2.0"
+  }
+}
