@@ -80,10 +80,12 @@
     <Content Include="js\gafe.js" />
     <Content Include="js\lib\angular-animate.min.js" />
     <Content Include="js\lib\angular-aria.min.js" />
+    <Content Include="js\lib\angular-local-storage.min.js" />
     <Content Include="js\lib\angular-material.min.js" />
     <Content Include="js\lib\angular-messages.min.js" />
     <Content Include="js\lib\angular-ui-router.min.js" />
     <Content Include="js\lib\angular.min.js" />
+    <Content Include="js\lib\async.min.js" />
     <Content Include="js\lib\bootstrap.min.js" />
     <Content Include="js\lib\jquery.min.js" />
     <Content Include="js\lib\ng-module.js" />
@@ -97,7 +99,16 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="source\gafe\ts\apps\gafe\DriveService.ts" />
+    <TypeScriptCompile Include="source\gafe\ts\apps\gafe\Models\IMailMessage.ts" />
+    <TypeScriptCompile Include="source\gafe\ts\apps\gafe\Models\IAlertMessage.ts" />
+    <TypeScriptCompile Include="source\gafe\ts\apps\gafe\Models\IPerson.ts" />
+    <TypeScriptCompile Include="source\gafe\ts\apps\gafe\Models\IFile.ts" />
+    <TypeScriptCompile Include="source\gafe\ts\apps\gafe\Models\IActivity.ts" />
+    <TypeScriptCompile Include="source\gafe\ts\apps\gafe\Services\MailService.ts" />
+    <TypeScriptCompile Include="source\gafe\ts\apps\gafe\Services\ActivityService.ts" />
+    <TypeScriptCompile Include="source\gafe\ts\apps\gafe\Services\CalendarService.ts" />
+    <TypeScriptCompile Include="source\gafe\ts\apps\gafe\Services\UserService.ts" />
+    <TypeScriptCompile Include="source\gafe\ts\apps\gafe\Services\DriveService.ts" />
     <TypeScriptCompile Include="source\gafe\ts\apps\gafe\reference.ts" />
     <Content Include="js\app.js" />
     <TypeScriptCompile Include="source\gafe\ts\apps\gafe\core\App.ts" />
