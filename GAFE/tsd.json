@@ -1,0 +1,18 @@
+﻿{
+  "version": "v4",
+  "repo": "deviateltd/DefinitelyTyped",
+  "ref": "master",
+  "path": "source/gafe/ts/typings",
+  "bundle": "source/gafe/ts/typings/tsd.d.ts",
+  "installed": {
+    "jquery/jquery.d.ts": {
+      "commit": "c49b5bef802fb60e87e59996fcb21133cd2ee2a3"
+    },
+    "angularjs/angular.d.ts": {
+      "commit": "c49b5bef802fb60e87e59996fcb21133cd2ee2a3"
+    },
+    "angular-local-storage/angular-local-storage.d.ts": {
+      "commit": "c49b5bef802fb60e87e59996fcb21133cd2ee2a3"
+    }
+  }
+}

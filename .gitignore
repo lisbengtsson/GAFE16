@@ -1,0 +1,15 @@
+GAFE/.tscache/
+GAFE/bin/
+GAFE/bower_components/
+GAFE/node_modules/
+packages/
+GAFE/obj/
+GAFE/source/gafe/ts/**/*.js
+GAFE/source/gafe/ts/**/*.js.map
+GAFE/js/lib/
+GAFE/js/gafe.js
+GAFE/source/gafe/ts/typings/
+GAFE/fonts/lib/glyphicons-halflings-regular.woff2
+GAFE/fonts/lib/
+GAFE/css/lib/
+.vs/

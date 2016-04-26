@@ -1,0 +1,158 @@
+﻿<html>
+<head>
+  <link href="css/lib/bootstrap.min.css" rel="stylesheet" />
+  <link href="css/lib/angular-material.min.css" rel="stylesheet" />
+  <link href="css/gafe.css" rel="stylesheet" />
+</head>
+<body>
+  <div ng-module="gafeApp">
+    <div ng-controller="gafeMainController as model" ng-cloak id="gafeApp" class="container">
+      <div ng-show="model.loading">
+        <md-progress-linear md-mode="indeterminate"></md-progress-linear>
+      </div>
+      <div ng-hide="model.loading">
+
+        <div id="authorize-div" ng-show="model.showConstent">
+          <span>Authorize access to your account</span>
+          <button class="btn btn-primary" id="authorize-button" ng-click="model.authorize()">
+            Authorize
+          </button>
+        </div>
+        <div ng-hide="model.showConstent">
+          <div class="alert" ng-show="model.message" ng-class="model.message.type" role="alert">{{model.message.message}}</div>
+
+          <md-content>
+            <md-tabs md-dynamic-height md-border-bottom>
+              <md-tab label="Drive">
+                <md-content class="md-padding">
+                  <md-input-container style="margin-right: 10px;">
+                    <label>Root Folder</label>
+                    <md-select ng-model="model.selectedRootFolder" ng-change="model.loadFiles()">
+                      <md-option ng-repeat="folder in model.folders" value="{{folder.id}}">{{folder.name}}</md-option>
+                    </md-select>
+                  </md-input-container>
+
+                  <md-radio-group ng-model="model.selectedTemplate">
+                    <md-radio-button ng-repeat="file in model.files" value="{{file.id}}" class="md-primary">{{file.name}}</md-radio-button>
+                  </md-radio-group>
+
+                  <md-input-container class="md-block" flex-gt-sm>
+                    <label>Folder name</label>
+                    <input ng-model="model.folderName">
+                  </md-input-container>
+
+                  <md-input-container class="md-block" flex-gt-sm>
+                    <label>File name</label>
+                    <input ng-model="model.fileName">
+                  </md-input-container>
+
+                  <md-input-container class="md-block" flex-gt-sm>
+                    <md-checkbox ng-model="model.share">Share</md-checkbox>
+                  </md-input-container>
+
+                  <md-button class="md-raised md-primary" ng-click="model.createCopy()">Create</md-button>
+                  <md-button class="md-raised" ng-click="model.pdf()">Download template as pdf</md-button>
+
+                </md-content>
+              </md-tab>
+
+              <md-tab label="Users">
+                <button class="btn" ng-click="model.uncheckAll()">Clear</button>
+                <table class="table table-striped">
+                  <tr class="list-group-item" ng-repeat="user in model.people">
+                    <td>
+                      <md-checkbox ng-checked="model.userExists(user)" ng-click="model.userToggle(user)" aria-label="."></md-checkbox>
+                    </td>
+                    <td>
+                      <md-input-container class="md-block" flex-gt-sm>
+                        <label>Name</label>
+                        <input ng-model="user.name">
+                      </md-input-container>
+                    </td>
+                    <td>
+                      <md-input-container class="md-block" flex-gt-sm>
+                        <label>Email</label>
+                        <input ng-model="user.email">
+                      </md-input-container>
+                    </td>
+                    <td>
+                      <button class="btn btn-danger" ng-click="model.removeUser(user)">Delete</button>
+                    </td>
+                  </tr>
+                </table>
+
+                <button class="btn btn-primary" ng-click="model.addUser()">Add</button>
+                <button class="btn btn-success" ng-click="model.saveUsers()">Save</button>
+                <button class="btn" ng-click="model.loadUsers()">Load</button>
+                <button class="btn btn-danger" ng-click="model.clearUsers()">Clear</button>
+
+              </md-tab>
+
+              <md-tab label="Activities">
+
+                <md-button class="md-raised" ng-click="model.loadActivities()">Load activities</md-button>
+
+                <ul class="list-group">
+                  <li class="list-group-item" ng-repeat="activity in model.activities">{{activity.name}} {{activity.eventType}} <a href="https://drive.google.com/file/d/{{activity.targetId}}/edit?usp=sharing" target="_blank">{{activity.targetName}}</a></li>
+                </ul>
+              </md-tab>
+
+              <md-tab label="Mail">
+
+                <md-button class="md-raised" ng-click="model.loadMail()">Load mail</md-button>
+
+                <ul class="list-group">
+                  <li class="list-group-item" ng-repeat="mail in model.mail"><a href="https://mail.google.com/mail/u/0/?tab=om#inbox/{{mail.id}}" target="_blank">{{mail.subject}}</a></li>
+                </ul>
+              </md-tab>
+
+              <md-tab label="Calendar">
+                <md-input-container class="md-block" flex-gt-sm>
+                  <label>Event name</label>
+                  <input ng-model="model.eventName">
+                </md-input-container>
+
+                <md-button class="md-raised" ng-click="model.createCalendarEvent()">Create Event</md-button>
+              </md-tab>
+
+            </md-tabs>
+
+          </md-content>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <h4>Made with:</h4>
+    <ul class="list-group">
+      <li class="list-group-item"><a href="https://angularjs.org">Angular</a></li>
+      <li class="list-group-item"><a href="https://material.angularjs.org">Angular Material</a></li>
+      <li class="list-group-item"><a href="http://bower.io">Bower</a></li>
+      <li class="list-group-item"><a href="https://nodejs.com">Node JS</a></li>
+      <li class="list-group-item"><a href="http://gulpjs.com">Gulp</a></li>
+      <li class="list-group-item"><a href="http://gruntjs.com">Grunt</a></li>
+      <li class="list-group-item"><a href="http://getbootstrap.com">Bootstrap</a></li>
+      <li class="list-group-item">Various Gulp and Grunt plugins.</li>
+    </ul>
+    <h4>Check it out at <a href="https://github.com/lisbengtsson/GAFE16">Github</a></h4>
+  </div>
+
+  <script src="js/lib/jquery.min.js"></script>
+  <script src="js/lib/angular.min.js"></script>
+  <script src="js/lib/angular-animate.min.js"></script>
+  <script src="js/lib/angular-aria.min.js"></script>
+  <script src="js/lib/angular-material.min.js"></script>
+  <script src="js/lib/angular-messages.min.js"></script>
+  <script src="js/lib/angular-ui-router.min.js"></script>
+  <script src="js/lib/angular-local-storage.min.js"></script>
+  <script src="js/lib/bootstrap.min.js"></script>
+  <script src="js/lib/ng-module.js"></script>
+  <script src="js/lib/sortable.min.js"></script>
+  <script src="js/lib/async.min.js"></script>
+
+  <script src="js/gafe.js"></script>
+  <script src="js/app.js"></script>
+  <script src="https://apis.google.com/js/client.js?onload=checkAuth"></script>
+</body>
+</html>
